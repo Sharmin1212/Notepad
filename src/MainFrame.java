@@ -60,6 +60,8 @@ public class MainFrame extends javax.swing.JFrame {
         jToolBar1.add(jButton2);
 
         getContentPane().add(jToolBar1, java.awt.BorderLayout.PAGE_START);
+
+        jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1, java.awt.BorderLayout.PAGE_END);
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
