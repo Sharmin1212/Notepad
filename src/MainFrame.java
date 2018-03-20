@@ -1,12 +1,10 @@
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import static java.awt.SystemColor.text;
+import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -47,6 +45,7 @@ public class MainFrame extends javax.swing.JFrame {
         menuItemNew = new javax.swing.JMenuItem();
         menuItemOpenFile = new javax.swing.JMenuItem();
         menuItemSave = new javax.swing.JMenuItem();
+        menuItemSaveAs = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         menuItemExit = new javax.swing.JMenuItem();
         menuEdit = new javax.swing.JMenu();
@@ -56,6 +55,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
         btnSave.setText("Save");
@@ -102,10 +102,23 @@ public class MainFrame extends javax.swing.JFrame {
         menuFile.add(menuItemNew);
 
         menuItemOpenFile.setText("Open file");
+        menuItemOpenFile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemOpenFileActionPerformed(evt);
+            }
+        });
         menuFile.add(menuItemOpenFile);
 
         menuItemSave.setText("Save");
         menuFile.add(menuItemSave);
+
+        menuItemSaveAs.setText("Save as");
+        menuItemSaveAs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemSaveAsActionPerformed(evt);
+            }
+        });
+        menuFile.add(menuItemSaveAs);
         menuFile.add(jSeparator1);
 
         menuItemExit.setText("Exit");
@@ -134,11 +147,27 @@ public class MainFrame extends javax.swing.JFrame {
     private void menuItemNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemNewActionPerformed
     }//GEN-LAST:event_menuItemNewActionPerformed
 
-    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+    public void saveFile() {
+        JFileChooser s = new JFileChooser();
+        int returnVal = s.showSaveDialog(this);
 
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            try {
+                BufferedWriter out = new BufferedWriter(new FileWriter(s.getSelectedFile().getPath()));
+                out.write(textArea.getText());
+                out.close();
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage());
+            }
+        }
+
+    }
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        saveFile();
     }//GEN-LAST:event_btnSaveActionPerformed
 
-    private void btnLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadActionPerformed
+    public void openFile() {
         int returnVal = fileChooser.showOpenDialog(this);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             File file = fileChooser.getSelectedFile();
@@ -150,7 +179,19 @@ public class MainFrame extends javax.swing.JFrame {
         } else {
             System.out.println("File access cancelled by user.");
         }
+    }
+
+    private void btnLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadActionPerformed
+        openFile();
     }//GEN-LAST:event_btnLoadActionPerformed
+
+    private void menuItemOpenFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemOpenFileActionPerformed
+        openFile();
+    }//GEN-LAST:event_menuItemOpenFileActionPerformed
+
+    private void menuItemSaveAsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemSaveAsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuItemSaveAsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -205,6 +246,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemNew;
     private javax.swing.JMenuItem menuItemOpenFile;
     private javax.swing.JMenuItem menuItemSave;
+    private javax.swing.JMenuItem menuItemSaveAs;
     private javax.swing.JTextArea textArea;
     // End of variables declaration//GEN-END:variables
 }
