@@ -30,7 +30,6 @@ public class MainFrame extends javax.swing.JFrame {
 
     File fileToSave;
     private boolean saved = false;
-    
 
     /**
      * Creates new form MainFrame
@@ -49,11 +48,11 @@ public class MainFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         fileChooser = new javax.swing.JFileChooser();
-        jDialog1 = new javax.swing.JDialog();
+        jDialogNew = new javax.swing.JDialog();
         jLabel2 = new javax.swing.JLabel();
-        DialogYes = new javax.swing.JButton();
-        DialogNo = new javax.swing.JButton();
-        DialogCancel = new javax.swing.JButton();
+        DialogNewYes = new javax.swing.JButton();
+        DialogNewNo = new javax.swing.JButton();
+        DialogNewCancel = new javax.swing.JButton();
         jToolBar1 = new javax.swing.JToolBar();
         btnSave = new javax.swing.JButton();
         btnLoad = new javax.swing.JButton();
@@ -73,59 +72,59 @@ public class MainFrame extends javax.swing.JFrame {
         jMenuItem6 = new javax.swing.JMenuItem();
         menuAbout = new javax.swing.JMenu();
 
-        jDialog1.setMinimumSize(new java.awt.Dimension(400, 100));
+        jDialogNew.setMinimumSize(new java.awt.Dimension(400, 100));
 
         jLabel2.setText("Want to save?");
         jLabel2.setToolTipText("");
 
-        DialogYes.setText("Yes");
-        DialogYes.addActionListener(new java.awt.event.ActionListener() {
+        DialogNewYes.setText("Yes");
+        DialogNewYes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DialogYesActionPerformed(evt);
+                DialogNewYesActionPerformed(evt);
             }
         });
 
-        DialogNo.setText("No");
-        DialogNo.addActionListener(new java.awt.event.ActionListener() {
+        DialogNewNo.setText("No");
+        DialogNewNo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DialogNoActionPerformed(evt);
+                DialogNewNoActionPerformed(evt);
             }
         });
 
-        DialogCancel.setText("Cancel");
-        DialogCancel.addActionListener(new java.awt.event.ActionListener() {
+        DialogNewCancel.setText("Cancel");
+        DialogNewCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DialogCancelActionPerformed(evt);
+                DialogNewCancelActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
-        jDialog1.getContentPane().setLayout(jDialog1Layout);
-        jDialog1Layout.setHorizontalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialog1Layout.createSequentialGroup()
+        javax.swing.GroupLayout jDialogNewLayout = new javax.swing.GroupLayout(jDialogNew.getContentPane());
+        jDialogNew.getContentPane().setLayout(jDialogNewLayout);
+        jDialogNewLayout.setHorizontalGroup(
+            jDialogNewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogNewLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDialog1Layout.createSequentialGroup()
+                .addGroup(jDialogNewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDialogNewLayout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jDialog1Layout.createSequentialGroup()
-                        .addComponent(DialogYes)
+                    .addGroup(jDialogNewLayout.createSequentialGroup()
+                        .addComponent(DialogNewYes)
                         .addGap(18, 18, 18)
-                        .addComponent(DialogNo, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(DialogNewNo, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(DialogCancel)
+                        .addComponent(DialogNewCancel)
                         .addGap(20, 20, 20))))
         );
-        jDialog1Layout.setVerticalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialog1Layout.createSequentialGroup()
+        jDialogNewLayout.setVerticalGroup(
+            jDialogNewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogNewLayout.createSequentialGroup()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 207, Short.MAX_VALUE)
-                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(DialogYes)
-                    .addComponent(DialogNo)
-                    .addComponent(DialogCancel))
+                .addGroup(jDialogNewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DialogNewYes)
+                    .addComponent(DialogNewNo)
+                    .addComponent(DialogNewCancel))
                 .addGap(39, 39, 39))
         );
 
@@ -231,7 +230,7 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuItemNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemNewActionPerformed
-        jDialog1.setVisible(true);
+        jDialogNew.setVisible(true);
     }//GEN-LAST:event_menuItemNewActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
@@ -328,15 +327,24 @@ public class MainFrame extends javax.swing.JFrame {
             menuItemSaveAsActionPerformed(evt);
         }    }//GEN-LAST:event_menuItemSaveActionPerformed
 
-    private void DialogYesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DialogYesActionPerformed
-        save();
-    }//GEN-LAST:event_DialogYesActionPerformed
+    private void DialogNewYesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DialogNewYesActionPerformed
+        if (saved == true) {
+            save();
+        } else {
+            menuItemSaveAsActionPerformed(evt);
+        }
+        textArea.setText("");
+        saved = false;
+        jDialogNew.dispose();
+    }//GEN-LAST:event_DialogNewYesActionPerformed
 
-    private void DialogNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DialogNoActionPerformed
-        jDialog1.dispose();    }//GEN-LAST:event_DialogNoActionPerformed
+    private void DialogNewNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DialogNewNoActionPerformed
+        textArea.setText("");
+        saved = false;
+        jDialogNew.dispose();    }//GEN-LAST:event_DialogNewNoActionPerformed
 
-    private void DialogCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DialogCancelActionPerformed
-        jDialog1.dispose();    }//GEN-LAST:event_DialogCancelActionPerformed
+    private void DialogNewCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DialogNewCancelActionPerformed
+        jDialogNew.dispose();    }//GEN-LAST:event_DialogNewCancelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -382,13 +390,13 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton DialogCancel;
-    private javax.swing.JButton DialogNo;
-    private javax.swing.JButton DialogYes;
+    private javax.swing.JButton DialogNewCancel;
+    private javax.swing.JButton DialogNewNo;
+    private javax.swing.JButton DialogNewYes;
     private javax.swing.JButton btnLoad;
     private javax.swing.JButton btnSave;
     private javax.swing.JFileChooser fileChooser;
-    private javax.swing.JDialog jDialog1;
+    private javax.swing.JDialog jDialogNew;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
