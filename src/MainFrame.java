@@ -58,10 +58,13 @@ public class MainFrame extends javax.swing.JFrame {
         DialogExitYes = new javax.swing.JButton();
         DialogExitNo = new javax.swing.JButton();
         DialogExitCancel = new javax.swing.JButton();
+        jDialogAbout = new javax.swing.JDialog();
+        jLabel4 = new javax.swing.JLabel();
+        btnClose = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
         jToolBar1 = new javax.swing.JToolBar();
         btnSave = new javax.swing.JButton();
         btnLoad = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         textArea = new javax.swing.JTextArea();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -73,9 +76,10 @@ public class MainFrame extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         menuItemExit = new javax.swing.JMenuItem();
         menuEdit = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        menuAbout = new javax.swing.JMenu();
+        menuItemUndo = new javax.swing.JMenuItem();
+        menuItemRedo = new javax.swing.JMenuItem();
+        menuHelp = new javax.swing.JMenu();
+        menuItemAbout = new javax.swing.JMenuItem();
 
         jDialogNew.setMinimumSize(new java.awt.Dimension(400, 100));
 
@@ -189,6 +193,51 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(39, 39, 39))
         );
 
+        jDialogAbout.setMinimumSize(new java.awt.Dimension(400, 200));
+
+        jLabel4.setText("Made by Marc Nebot, 2018");
+        jLabel4.setToolTipText("");
+
+        btnClose.setText("Close");
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Version 1.09");
+
+        javax.swing.GroupLayout jDialogAboutLayout = new javax.swing.GroupLayout(jDialogAbout.getContentPane());
+        jDialogAbout.getContentPane().setLayout(jDialogAboutLayout);
+        jDialogAboutLayout.setHorizontalGroup(
+            jDialogAboutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogAboutLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jDialogAboutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDialogAboutLayout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogAboutLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
+            .addGroup(jDialogAboutLayout.createSequentialGroup()
+                .addGap(167, 167, 167)
+                .addComponent(btnClose)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jDialogAboutLayout.setVerticalGroup(
+            jDialogAboutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogAboutLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5)
+                .addGap(18, 18, 18)
+                .addComponent(btnClose)
+                .addContainerGap(200, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(700, 700));
 
@@ -219,9 +268,6 @@ public class MainFrame extends javax.swing.JFrame {
 
         getContentPane().add(jToolBar1, java.awt.BorderLayout.PAGE_START);
 
-        jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1, java.awt.BorderLayout.PAGE_END);
-
         textArea.setColumns(20);
         textArea.setRows(5);
         textArea.setName(""); // NOI18N
@@ -232,6 +278,7 @@ public class MainFrame extends javax.swing.JFrame {
         menuFile.setText("File");
 
         menuItemNew.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
+        menuItemNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/new-file-icon (1).png"))); // NOI18N
         menuItemNew.setText("New");
         menuItemNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -241,6 +288,7 @@ public class MainFrame extends javax.swing.JFrame {
         menuFile.add(menuItemNew);
 
         menuItemOpenFile.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
+        menuItemOpenFile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Open-file-icon.png"))); // NOI18N
         menuItemOpenFile.setText("Open file");
         menuItemOpenFile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -250,6 +298,7 @@ public class MainFrame extends javax.swing.JFrame {
         menuFile.add(menuItemOpenFile);
 
         menuItemSave.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        menuItemSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Save-icon.png"))); // NOI18N
         menuItemSave.setText("Save");
         menuItemSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -258,6 +307,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
         menuFile.add(menuItemSave);
 
+        menuItemSaveAs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Save-as-icon.png"))); // NOI18N
         menuItemSaveAs.setText("Save as");
         menuItemSaveAs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -267,6 +317,7 @@ public class MainFrame extends javax.swing.JFrame {
         menuFile.add(menuItemSaveAs);
         menuFile.add(jSeparator1);
 
+        menuItemExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Close-icon.png"))); // NOI18N
         menuItemExit.setText("Exit");
         menuItemExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -279,16 +330,35 @@ public class MainFrame extends javax.swing.JFrame {
 
         menuEdit.setText("Edit");
 
-        jMenuItem5.setText("jMenuItem5");
-        menuEdit.add(jMenuItem5);
+        menuItemUndo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z, java.awt.event.InputEvent.CTRL_MASK));
+        menuItemUndo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Undo-icon.png"))); // NOI18N
+        menuItemUndo.setText("Undo");
+        menuItemUndo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemUndoActionPerformed(evt);
+            }
+        });
+        menuEdit.add(menuItemUndo);
 
-        jMenuItem6.setText("jMenuItem6");
-        menuEdit.add(jMenuItem6);
+        menuItemRedo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Y, java.awt.event.InputEvent.CTRL_MASK));
+        menuItemRedo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Redo-icon.png"))); // NOI18N
+        menuItemRedo.setText("Redo");
+        menuEdit.add(menuItemRedo);
 
         jMenuBar1.add(menuEdit);
 
-        menuAbout.setText("About");
-        jMenuBar1.add(menuAbout);
+        menuHelp.setText("Help");
+
+        menuItemAbout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Actions-help-about-icon.png"))); // NOI18N
+        menuItemAbout.setText("About");
+        menuItemAbout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemAboutActionPerformed(evt);
+            }
+        });
+        menuHelp.add(menuItemAbout);
+
+        jMenuBar1.add(menuHelp);
 
         setJMenuBar(jMenuBar1);
 
@@ -344,14 +414,13 @@ public class MainFrame extends javax.swing.JFrame {
         this.btnLoad = btnLoad;
         this.btnSave = btnSave;
         this.fileChooser = fileChooser;
-        this.jLabel1 = jLabel1;
         this.jMenuBar1 = jMenuBar1;
-        this.jMenuItem5 = jMenuItem5;
-        this.jMenuItem6 = jMenuItem6;
+        this.menuItemUndo = jMenuItem5;
+        this.menuItemRedo = jMenuItem6;
         this.jScrollPane1 = jScrollPane1;
         this.jSeparator1 = jSeparator1;
         this.jToolBar1 = jToolBar1;
-        this.menuAbout = menuAbout;
+        this.menuHelp = menuAbout;
         this.menuEdit = menuEdit;
         this.menuFile = menuFile;
         this.menuItemExit = menuItemExit;
@@ -428,12 +497,23 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_DialogExitNoActionPerformed
 
     private void DialogExitCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DialogExitCancelActionPerformed
-        jDialogNew.dispose();
+        jDialogExit.dispose();
     }//GEN-LAST:event_DialogExitCancelActionPerformed
 
     private void menuItemExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemExitActionPerformed
         jDialogExit.setVisible(true);
     }//GEN-LAST:event_menuItemExitActionPerformed
+
+    private void menuItemAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAboutActionPerformed
+        jDialogAbout.setVisible(true);
+    }//GEN-LAST:event_menuItemAboutActionPerformed
+
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
+        jDialogAbout.dispose();        jDialogAbout.dispose();        jDialogAbout.dispose();    }//GEN-LAST:event_btnCloseActionPerformed
+
+    private void menuItemUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemUndoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuItemUndoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -485,28 +565,32 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton DialogNewCancel;
     private javax.swing.JButton DialogNewNo;
     private javax.swing.JButton DialogNewYes;
+    private javax.swing.JButton btnClose;
     private javax.swing.JButton btnLoad;
     private javax.swing.JButton btnSave;
     private javax.swing.JFileChooser fileChooser;
+    private javax.swing.JDialog jDialogAbout;
     private javax.swing.JDialog jDialogExit;
     private javax.swing.JDialog jDialogNew;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JToolBar jToolBar1;
-    private javax.swing.JMenu menuAbout;
     private javax.swing.JMenu menuEdit;
     private javax.swing.JMenu menuFile;
+    private javax.swing.JMenu menuHelp;
+    private javax.swing.JMenuItem menuItemAbout;
     private javax.swing.JMenuItem menuItemExit;
     private javax.swing.JMenuItem menuItemNew;
     private javax.swing.JMenuItem menuItemOpenFile;
+    private javax.swing.JMenuItem menuItemRedo;
     private javax.swing.JMenuItem menuItemSave;
     private javax.swing.JMenuItem menuItemSaveAs;
+    private javax.swing.JMenuItem menuItemUndo;
     private javax.swing.JTextArea textArea;
     // End of variables declaration//GEN-END:variables
 }
