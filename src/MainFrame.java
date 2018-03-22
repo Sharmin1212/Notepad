@@ -53,6 +53,11 @@ public class MainFrame extends javax.swing.JFrame {
         DialogNewYes = new javax.swing.JButton();
         DialogNewNo = new javax.swing.JButton();
         DialogNewCancel = new javax.swing.JButton();
+        jDialogExit = new javax.swing.JDialog();
+        jLabel3 = new javax.swing.JLabel();
+        DialogExitYes = new javax.swing.JButton();
+        DialogExitNo = new javax.swing.JButton();
+        DialogExitCancel = new javax.swing.JButton();
         jToolBar1 = new javax.swing.JToolBar();
         btnSave = new javax.swing.JButton();
         btnLoad = new javax.swing.JButton();
@@ -125,6 +130,62 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(DialogNewYes)
                     .addComponent(DialogNewNo)
                     .addComponent(DialogNewCancel))
+                .addGap(39, 39, 39))
+        );
+
+        jDialogExit.setMinimumSize(new java.awt.Dimension(400, 100));
+
+        jLabel3.setText("Want to save?");
+        jLabel3.setToolTipText("");
+
+        DialogExitYes.setText("Yes");
+        DialogExitYes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DialogExitYesActionPerformed(evt);
+            }
+        });
+
+        DialogExitNo.setText("No");
+        DialogExitNo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DialogExitNoActionPerformed(evt);
+            }
+        });
+
+        DialogExitCancel.setText("Cancel");
+        DialogExitCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DialogExitCancelActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jDialogExitLayout = new javax.swing.GroupLayout(jDialogExit.getContentPane());
+        jDialogExit.getContentPane().setLayout(jDialogExitLayout);
+        jDialogExitLayout.setHorizontalGroup(
+            jDialogExitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogExitLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jDialogExitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDialogExitLayout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jDialogExitLayout.createSequentialGroup()
+                        .addComponent(DialogExitYes)
+                        .addGap(18, 18, 18)
+                        .addComponent(DialogExitNo, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(DialogExitCancel)
+                        .addGap(20, 20, 20))))
+        );
+        jDialogExitLayout.setVerticalGroup(
+            jDialogExitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogExitLayout.createSequentialGroup()
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 207, Short.MAX_VALUE)
+                .addGroup(jDialogExitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DialogExitYes)
+                    .addComponent(DialogExitNo)
+                    .addComponent(DialogExitCancel))
                 .addGap(39, 39, 39))
         );
 
@@ -346,6 +407,18 @@ public class MainFrame extends javax.swing.JFrame {
     private void DialogNewCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DialogNewCancelActionPerformed
         jDialogNew.dispose();    }//GEN-LAST:event_DialogNewCancelActionPerformed
 
+    private void DialogExitYesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DialogExitYesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DialogExitYesActionPerformed
+
+    private void DialogExitNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DialogExitNoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DialogExitNoActionPerformed
+
+    private void DialogExitCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DialogExitCancelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DialogExitCancelActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -390,15 +463,20 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton DialogExitCancel;
+    private javax.swing.JButton DialogExitNo;
+    private javax.swing.JButton DialogExitYes;
     private javax.swing.JButton DialogNewCancel;
     private javax.swing.JButton DialogNewNo;
     private javax.swing.JButton DialogNewYes;
     private javax.swing.JButton btnLoad;
     private javax.swing.JButton btnSave;
     private javax.swing.JFileChooser fileChooser;
+    private javax.swing.JDialog jDialogExit;
     private javax.swing.JDialog jDialogNew;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
