@@ -30,6 +30,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     File fileToSave;
     private boolean saved = false;
+    
 
     /**
      * Creates new form MainFrame
@@ -72,6 +73,8 @@ public class MainFrame extends javax.swing.JFrame {
         jMenuItem6 = new javax.swing.JMenuItem();
         menuAbout = new javax.swing.JMenu();
 
+        jDialog1.setMinimumSize(new java.awt.Dimension(400, 100));
+
         jLabel2.setText("Want to save?");
         jLabel2.setToolTipText("");
 
@@ -83,8 +86,18 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         DialogNo.setText("No");
+        DialogNo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DialogNoActionPerformed(evt);
+            }
+        });
 
         DialogCancel.setText("Cancel");
+        DialogCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DialogCancelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -108,7 +121,7 @@ public class MainFrame extends javax.swing.JFrame {
             jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDialog1Layout.createSequentialGroup()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 207, Short.MAX_VALUE)
                 .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(DialogYes)
                     .addComponent(DialogNo)
@@ -117,7 +130,7 @@ public class MainFrame extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(97, 80));
+        setMinimumSize(new java.awt.Dimension(700, 700));
 
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
@@ -218,7 +231,7 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuItemNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemNewActionPerformed
-
+        jDialog1.setVisible(true);
     }//GEN-LAST:event_menuItemNewActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
@@ -316,8 +329,14 @@ public class MainFrame extends javax.swing.JFrame {
         }    }//GEN-LAST:event_menuItemSaveActionPerformed
 
     private void DialogYesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DialogYesActionPerformed
-        // TODO add your handling code here:
+        save();
     }//GEN-LAST:event_DialogYesActionPerformed
+
+    private void DialogNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DialogNoActionPerformed
+        jDialog1.dispose();    }//GEN-LAST:event_DialogNoActionPerformed
+
+    private void DialogCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DialogCancelActionPerformed
+        jDialog1.dispose();    }//GEN-LAST:event_DialogCancelActionPerformed
 
     /**
      * @param args the command line arguments
