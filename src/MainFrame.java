@@ -79,7 +79,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         jDialogNew.setMinimumSize(new java.awt.Dimension(400, 100));
 
-        jLabel2.setText("Want to save?");
+        jLabel2.setText("Do you want to save?");
         jLabel2.setToolTipText("");
 
         DialogNewYes.setText("Yes");
@@ -135,7 +135,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         jDialogExit.setMinimumSize(new java.awt.Dimension(400, 100));
 
-        jLabel3.setText("Want to save?");
+        jLabel3.setText("Do you want to save?");
         jLabel3.setToolTipText("");
 
         DialogExitYes.setText("Yes");
@@ -268,6 +268,11 @@ public class MainFrame extends javax.swing.JFrame {
         menuFile.add(jSeparator1);
 
         menuItemExit.setText("Exit");
+        menuItemExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemExitActionPerformed(evt);
+            }
+        });
         menuFile.add(menuItemExit);
 
         jMenuBar1.add(menuFile);
@@ -408,16 +413,27 @@ public class MainFrame extends javax.swing.JFrame {
         jDialogNew.dispose();    }//GEN-LAST:event_DialogNewCancelActionPerformed
 
     private void DialogExitYesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DialogExitYesActionPerformed
-        // TODO add your handling code here:
+        if (saved == true) {
+            save();
+        } else {
+            menuItemSaveAsActionPerformed(evt);
+        }
+        jDialogNew.dispose();
+        System.exit(0);
     }//GEN-LAST:event_DialogExitYesActionPerformed
 
     private void DialogExitNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DialogExitNoActionPerformed
-        // TODO add your handling code here:
+        jDialogNew.dispose();
+        System.exit(0);
     }//GEN-LAST:event_DialogExitNoActionPerformed
 
     private void DialogExitCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DialogExitCancelActionPerformed
-        // TODO add your handling code here:
+        jDialogNew.dispose();
     }//GEN-LAST:event_DialogExitCancelActionPerformed
+
+    private void menuItemExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemExitActionPerformed
+        jDialogExit.setVisible(true);
+    }//GEN-LAST:event_menuItemExitActionPerformed
 
     /**
      * @param args the command line arguments
