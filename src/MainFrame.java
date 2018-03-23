@@ -5,17 +5,9 @@ import java.io.*;
 import static java.lang.System.out;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JButton;
-import javax.swing.JFileChooser;
-import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-import javax.swing.JPopupMenu;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JToolBar;
+import javax.swing.*;
+import javax.swing.event.*;
+import javax.swing.undo.*;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -28,6 +20,7 @@ import javax.swing.JToolBar;
  */
 public class MainFrame extends javax.swing.JFrame {
 
+    UndoManager undoManager = new UndoManager();
     File fileToSave;
     private boolean saved = false;
 
@@ -205,7 +198,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setText("Version 1.09");
+        jLabel5.setText("Version 1.11");
 
         javax.swing.GroupLayout jDialogAboutLayout = new javax.swing.GroupLayout(jDialogAbout.getContentPane());
         jDialogAbout.getContentPane().setLayout(jDialogAboutLayout);
@@ -214,13 +207,11 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(jDialogAboutLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jDialogAboutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDialogAboutLayout.createSequentialGroup()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogAboutLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
             .addGroup(jDialogAboutLayout.createSequentialGroup()
                 .addGap(167, 167, 167)
                 .addComponent(btnClose)
@@ -268,102 +259,115 @@ public class MainFrame extends javax.swing.JFrame {
 
         getContentPane().add(jToolBar1, java.awt.BorderLayout.PAGE_START);
 
-        textArea.setColumns(20);
-        textArea.setRows(5);
-        textArea.setName(""); // NOI18N
-        jScrollPane1.setViewportView(textArea);
+        textArea.getDocument().addUndoableEditListener(new
+            UndoableEditListener() {
+                @Override
+                public void undoableEditHappened(UndoableEditEvent e) {
+                    // TODO Auto-generated method stub
+                    undoManager.addEdit(e.getEdit());
+                }
+            });
+            textArea.setColumns(20);
+            textArea.setRows(5);
+            textArea.setName(""); // NOI18N
+            jScrollPane1.setViewportView(textArea);
 
-        getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
+            getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
-        menuFile.setText("File");
+            menuFile.setText("File");
 
-        menuItemNew.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
-        menuItemNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/new-file-icon (1).png"))); // NOI18N
-        menuItemNew.setText("New");
-        menuItemNew.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemNewActionPerformed(evt);
-            }
-        });
-        menuFile.add(menuItemNew);
+            menuItemNew.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
+            menuItemNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/new-file-icon (1).png"))); // NOI18N
+            menuItemNew.setText("New");
+            menuItemNew.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    menuItemNewActionPerformed(evt);
+                }
+            });
+            menuFile.add(menuItemNew);
 
-        menuItemOpenFile.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
-        menuItemOpenFile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Open-file-icon.png"))); // NOI18N
-        menuItemOpenFile.setText("Open file");
-        menuItemOpenFile.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemOpenFileActionPerformed(evt);
-            }
-        });
-        menuFile.add(menuItemOpenFile);
+            menuItemOpenFile.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
+            menuItemOpenFile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Open-file-icon.png"))); // NOI18N
+            menuItemOpenFile.setText("Open file");
+            menuItemOpenFile.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    menuItemOpenFileActionPerformed(evt);
+                }
+            });
+            menuFile.add(menuItemOpenFile);
 
-        menuItemSave.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
-        menuItemSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Save-icon.png"))); // NOI18N
-        menuItemSave.setText("Save");
-        menuItemSave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemSaveActionPerformed(evt);
-            }
-        });
-        menuFile.add(menuItemSave);
+            menuItemSave.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+            menuItemSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Save-icon.png"))); // NOI18N
+            menuItemSave.setText("Save");
+            menuItemSave.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    menuItemSaveActionPerformed(evt);
+                }
+            });
+            menuFile.add(menuItemSave);
 
-        menuItemSaveAs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Save-as-icon.png"))); // NOI18N
-        menuItemSaveAs.setText("Save as");
-        menuItemSaveAs.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemSaveAsActionPerformed(evt);
-            }
-        });
-        menuFile.add(menuItemSaveAs);
-        menuFile.add(jSeparator1);
+            menuItemSaveAs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Save-as-icon.png"))); // NOI18N
+            menuItemSaveAs.setText("Save as");
+            menuItemSaveAs.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    menuItemSaveAsActionPerformed(evt);
+                }
+            });
+            menuFile.add(menuItemSaveAs);
+            menuFile.add(jSeparator1);
 
-        menuItemExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Close-icon.png"))); // NOI18N
-        menuItemExit.setText("Exit");
-        menuItemExit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemExitActionPerformed(evt);
-            }
-        });
-        menuFile.add(menuItemExit);
+            menuItemExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Close-icon.png"))); // NOI18N
+            menuItemExit.setText("Exit");
+            menuItemExit.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    menuItemExitActionPerformed(evt);
+                }
+            });
+            menuFile.add(menuItemExit);
 
-        jMenuBar1.add(menuFile);
+            jMenuBar1.add(menuFile);
 
-        menuEdit.setText("Edit");
+            menuEdit.setText("Edit");
 
-        menuItemUndo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z, java.awt.event.InputEvent.CTRL_MASK));
-        menuItemUndo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Undo-icon.png"))); // NOI18N
-        menuItemUndo.setText("Undo");
-        menuItemUndo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemUndoActionPerformed(evt);
-            }
-        });
-        menuEdit.add(menuItemUndo);
+            menuItemUndo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z, java.awt.event.InputEvent.CTRL_MASK));
+            menuItemUndo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Undo-icon.png"))); // NOI18N
+            menuItemUndo.setText("Undo");
+            menuItemUndo.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    menuItemUndoActionPerformed(evt);
+                }
+            });
+            menuEdit.add(menuItemUndo);
 
-        menuItemRedo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Y, java.awt.event.InputEvent.CTRL_MASK));
-        menuItemRedo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Redo-icon.png"))); // NOI18N
-        menuItemRedo.setText("Redo");
-        menuEdit.add(menuItemRedo);
+            menuItemRedo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Y, java.awt.event.InputEvent.CTRL_MASK));
+            menuItemRedo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Redo-icon.png"))); // NOI18N
+            menuItemRedo.setText("Redo");
+            menuItemRedo.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    menuItemRedoActionPerformed(evt);
+                }
+            });
+            menuEdit.add(menuItemRedo);
 
-        jMenuBar1.add(menuEdit);
+            jMenuBar1.add(menuEdit);
 
-        menuHelp.setText("Help");
+            menuHelp.setText("Help");
 
-        menuItemAbout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Actions-help-about-icon.png"))); // NOI18N
-        menuItemAbout.setText("About");
-        menuItemAbout.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemAboutActionPerformed(evt);
-            }
-        });
-        menuHelp.add(menuItemAbout);
+            menuItemAbout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Actions-help-about-icon.png"))); // NOI18N
+            menuItemAbout.setText("About");
+            menuItemAbout.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    menuItemAboutActionPerformed(evt);
+                }
+            });
+            menuHelp.add(menuItemAbout);
 
-        jMenuBar1.add(menuHelp);
+            jMenuBar1.add(menuHelp);
 
-        setJMenuBar(jMenuBar1);
+            setJMenuBar(jMenuBar1);
 
-        pack();
-    }// </editor-fold>//GEN-END:initComponents
+            pack();
+        }// </editor-fold>//GEN-END:initComponents
 
     private void menuItemNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemNewActionPerformed
         jDialogNew.setVisible(true);
@@ -512,8 +516,20 @@ public class MainFrame extends javax.swing.JFrame {
         jDialogAbout.dispose();        jDialogAbout.dispose();        jDialogAbout.dispose();    }//GEN-LAST:event_btnCloseActionPerformed
 
     private void menuItemUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemUndoActionPerformed
-        // TODO add your handling code here:
+        try {
+            undoManager.undo();
+        } catch (CannotUndoException e) {
+
+        }
     }//GEN-LAST:event_menuItemUndoActionPerformed
+
+    private void menuItemRedoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRedoActionPerformed
+        try {
+            undoManager.redo();
+        } catch (CannotRedoException e) {
+        }
+
+    }//GEN-LAST:event_menuItemRedoActionPerformed
 
     /**
      * @param args the command line arguments
