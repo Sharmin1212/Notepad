@@ -76,24 +76,25 @@ public class MainFrame extends javax.swing.JFrame {
 
         jDialogNew.setMinimumSize(new java.awt.Dimension(400, 100));
 
-        jLabel2.setText("Do you want to save?");
-        jLabel2.setToolTipText("");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("Bundle"); // NOI18N
+        jLabel2.setText(bundle.getString("MainFrame.jLabel2.text")); // NOI18N
+        jLabel2.setToolTipText(bundle.getString("MainFrame.jLabel2.toolTipText")); // NOI18N
 
-        DialogNewYes.setText("Yes");
+        DialogNewYes.setText(bundle.getString("MainFrame.DialogNewYes.text")); // NOI18N
         DialogNewYes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DialogNewYesActionPerformed(evt);
             }
         });
 
-        DialogNewNo.setText("No");
+        DialogNewNo.setText(bundle.getString("MainFrame.DialogNewNo.text")); // NOI18N
         DialogNewNo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DialogNewNoActionPerformed(evt);
             }
         });
 
-        DialogNewCancel.setText("Cancel");
+        DialogNewCancel.setText(bundle.getString("MainFrame.DialogNewCancel.text")); // NOI18N
         DialogNewCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DialogNewCancelActionPerformed(evt);
@@ -132,24 +133,24 @@ public class MainFrame extends javax.swing.JFrame {
 
         jDialogExit.setMinimumSize(new java.awt.Dimension(400, 100));
 
-        jLabel3.setText("Do you want to save?");
-        jLabel3.setToolTipText("");
+        jLabel3.setText(bundle.getString("MainFrame.jLabel3.text")); // NOI18N
+        jLabel3.setToolTipText(bundle.getString("MainFrame.jLabel3.toolTipText")); // NOI18N
 
-        DialogExitYes.setText("Yes");
+        DialogExitYes.setText(bundle.getString("MainFrame.DialogExitYes.text")); // NOI18N
         DialogExitYes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DialogExitYesActionPerformed(evt);
             }
         });
 
-        DialogExitNo.setText("No");
+        DialogExitNo.setText(bundle.getString("MainFrame.DialogExitNo.text")); // NOI18N
         DialogExitNo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DialogExitNoActionPerformed(evt);
             }
         });
 
-        DialogExitCancel.setText("Cancel");
+        DialogExitCancel.setText(bundle.getString("MainFrame.DialogExitCancel.text")); // NOI18N
         DialogExitCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DialogExitCancelActionPerformed(evt);
@@ -188,17 +189,17 @@ public class MainFrame extends javax.swing.JFrame {
 
         jDialogAbout.setMinimumSize(new java.awt.Dimension(400, 200));
 
-        jLabel4.setText("Made by Marc Nebot, 2018");
-        jLabel4.setToolTipText("");
+        jLabel4.setText(bundle.getString("MainFrame.jLabel4.text")); // NOI18N
+        jLabel4.setToolTipText(bundle.getString("MainFrame.jLabel4.toolTipText")); // NOI18N
 
-        btnClose.setText("Close");
+        btnClose.setText(bundle.getString("MainFrame.btnClose.text")); // NOI18N
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCloseActionPerformed(evt);
             }
         });
 
-        jLabel5.setText("Version 1.11");
+        jLabel5.setText(bundle.getString("MainFrame.jLabel5.text")); // NOI18N
 
         javax.swing.GroupLayout jDialogAboutLayout = new javax.swing.GroupLayout(jDialogAbout.getContentPane());
         jDialogAbout.getContentPane().setLayout(jDialogAboutLayout);
@@ -235,7 +236,7 @@ public class MainFrame extends javax.swing.JFrame {
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
-        btnSave.setText("Save");
+        btnSave.setText(bundle.getString("MainFrame.btnSave.text")); // NOI18N
         btnSave.setFocusable(false);
         btnSave.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnSave.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -246,7 +247,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
         jToolBar1.add(btnSave);
 
-        btnLoad.setText("Load");
+        btnLoad.setText(bundle.getString("MainFrame.btnLoad.text")); // NOI18N
         btnLoad.setFocusable(false);
         btnLoad.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnLoad.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -274,11 +275,11 @@ public class MainFrame extends javax.swing.JFrame {
 
             getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
-            menuFile.setText("File");
+            menuFile.setText(bundle.getString("MainFrame.menuFile.text")); // NOI18N
 
             menuItemNew.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
             menuItemNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/new-file-icon (1).png"))); // NOI18N
-            menuItemNew.setText("New");
+            menuItemNew.setText(bundle.getString("MainFrame.menuItemNew.text")); // NOI18N
             menuItemNew.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     menuItemNewActionPerformed(evt);
@@ -288,7 +289,7 @@ public class MainFrame extends javax.swing.JFrame {
 
             menuItemOpenFile.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
             menuItemOpenFile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Open-file-icon.png"))); // NOI18N
-            menuItemOpenFile.setText("Open file");
+            menuItemOpenFile.setText(bundle.getString("MainFrame.menuItemOpenFile.text")); // NOI18N
             menuItemOpenFile.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     menuItemOpenFileActionPerformed(evt);
@@ -298,7 +299,7 @@ public class MainFrame extends javax.swing.JFrame {
 
             menuItemSave.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
             menuItemSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Save-icon.png"))); // NOI18N
-            menuItemSave.setText("Save");
+            menuItemSave.setText(bundle.getString("MainFrame.menuItemSave.text")); // NOI18N
             menuItemSave.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     menuItemSaveActionPerformed(evt);
@@ -307,7 +308,7 @@ public class MainFrame extends javax.swing.JFrame {
             menuFile.add(menuItemSave);
 
             menuItemSaveAs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Save-as-icon.png"))); // NOI18N
-            menuItemSaveAs.setText("Save as");
+            menuItemSaveAs.setText(bundle.getString("MainFrame.menuItemSaveAs.text")); // NOI18N
             menuItemSaveAs.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     menuItemSaveAsActionPerformed(evt);
@@ -317,7 +318,7 @@ public class MainFrame extends javax.swing.JFrame {
             menuFile.add(jSeparator1);
 
             menuItemExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Close-icon.png"))); // NOI18N
-            menuItemExit.setText("Exit");
+            menuItemExit.setText(bundle.getString("MainFrame.menuItemExit.text")); // NOI18N
             menuItemExit.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     menuItemExitActionPerformed(evt);
@@ -327,11 +328,11 @@ public class MainFrame extends javax.swing.JFrame {
 
             jMenuBar1.add(menuFile);
 
-            menuEdit.setText("Edit");
+            menuEdit.setText(bundle.getString("MainFrame.menuEdit.text")); // NOI18N
 
             menuItemUndo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z, java.awt.event.InputEvent.CTRL_MASK));
             menuItemUndo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Undo-icon.png"))); // NOI18N
-            menuItemUndo.setText("Undo");
+            menuItemUndo.setText(bundle.getString("MainFrame.menuItemUndo.text")); // NOI18N
             menuItemUndo.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     menuItemUndoActionPerformed(evt);
@@ -341,7 +342,7 @@ public class MainFrame extends javax.swing.JFrame {
 
             menuItemRedo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Y, java.awt.event.InputEvent.CTRL_MASK));
             menuItemRedo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Redo-icon.png"))); // NOI18N
-            menuItemRedo.setText("Redo");
+            menuItemRedo.setText(bundle.getString("MainFrame.menuItemRedo.text")); // NOI18N
             menuItemRedo.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     menuItemRedoActionPerformed(evt);
@@ -351,10 +352,10 @@ public class MainFrame extends javax.swing.JFrame {
 
             jMenuBar1.add(menuEdit);
 
-            menuHelp.setText("Help");
+            menuHelp.setText(bundle.getString("MainFrame.menuHelp.text")); // NOI18N
 
             menuItemAbout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Actions-help-about-icon.png"))); // NOI18N
-            menuItemAbout.setText("About");
+            menuItemAbout.setText(bundle.getString("MainFrame.menuItemAbout.text")); // NOI18N
             menuItemAbout.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     menuItemAboutActionPerformed(evt);
